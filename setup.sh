@@ -20,3 +20,8 @@ conda install -c conda-forge rpy2
 
 ## R package scran
 Rscript install_scran.R
+
+
+## conda for R package
+conda install bioconductor-rhdf5=2.30.0
+conda install bioconductor-rhdf5lib=1.8.0
