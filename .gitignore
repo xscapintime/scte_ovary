@@ -1,6 +1,7 @@
 *.gz
 *.tsv
 *.h5ad
-
+*.mtx
+*.npy
 
 figures/
