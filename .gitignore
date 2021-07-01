@@ -1,3 +1,6 @@
 *.gz
 *.tsv
 *.h5ad
+
+
+figures/
