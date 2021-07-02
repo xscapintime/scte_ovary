@@ -3,5 +3,8 @@
 *.h5ad
 *.mtx
 *.npy
+*.glb
+
+*.pdf
 
 figures/
