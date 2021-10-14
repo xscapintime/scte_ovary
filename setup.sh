@@ -5,6 +5,8 @@ conda isntall python=3.8
 
 ## just for jupyter
 conda install -y jupyter
+python -m ipykernel install –name scte –display-name "scte" # for using conda env in jupyter
+
 
 
 conda install matplotlib
