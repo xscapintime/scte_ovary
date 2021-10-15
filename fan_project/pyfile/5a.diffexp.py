@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from matplotlib import colors
 import pandas as pd
-from glbase3 import genelist
+from glbase3 import genelist, glload
 
 
 # In[2]:
@@ -22,11 +22,6 @@ sc.set_figure_params(dpi=200, dpi_save=200)
 matplotlib.rcParams['pdf.fonttype']=42
 matplotlib.rcParams['font.size']=10
 
-
-# In[3]:
-
-
-from glbase3 import genelist, glload
 
 
 # In[4]:

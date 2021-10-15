@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from matplotlib import colors
 import pandas as pd
-from glbase3 import genelist
+from glbase3 import genelist, glload
 
 
 # In[2]:
@@ -22,11 +22,6 @@ sc.set_figure_params(dpi=200, dpi_save=200)
 matplotlib.rcParams['pdf.fonttype']=42
 matplotlib.rcParams['font.size']=10
 
-
-# In[3]:
-
-
-from glbase3 import genelist, glload
 
 
 # In[4]:
@@ -142,7 +137,7 @@ for group in newcols:
 
 
 # In[14]:
-
+# alpha, beta?
 
 for grp in newcols:
     if not newcols[grp]:
@@ -155,10 +150,3 @@ for grp in newcols:
             show=False, save='-markers-grp{0}-{1}.pdf'.format(grp, k['name']))
         #sc.pl.violin(adata, [k], groupby='disease', size=0, log=False, cut=0, show=False, save='markers-{0}-disease.pdf'.format(k))
         #sc.pl.violin(adata, [k], groupby='cell_type', size=0, log=False, cut=0, show=False, save='markers-{0}-cell_type.pdf'.format(k))
-
-
-# In[ ]:
-
-
-
-
