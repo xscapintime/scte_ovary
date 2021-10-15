@@ -150,20 +150,20 @@ for k in marker_genes_dict:
 # In[7]:
 
 
-print(adata.obs)
+# print(adata.obs)
 
 
 # In[44]:
 
 
 
-print(adata.raw.var_names)
+# print(adata.raw.var_names)
 
 
 # In[33]:
 
 
-'aaas' in adata.var_names
+# 'aaas' in adata.var_names
 
 
 # In[10]:
