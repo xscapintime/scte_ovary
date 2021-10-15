@@ -24,11 +24,11 @@ from matplotlib import colors
 # In[2]:
 
 
-plt.rcParams['figure.figsize'] = (8,8)
+plt.rcParams['figure.figsize'] = (10,8)
 sc.settings.verbosity = 3
 sc.set_figure_params(dpi=200, dpi_save=200)
 matplotlib.rcParams['pdf.fonttype'] = 42
-matplotlib.rcParams['font.size'] = 10
+matplotlib.rcParams['font.size'] = 6
 sc.settings.autoshow = False
 
 
@@ -53,7 +53,8 @@ adata = sc.read('raw_data.h5ad')
 
 
 ## violin plot
-sc.pl.violin(adata, ['n_genes', 'n_counts'], groupby='source', size=0, log=False, cut=0, show=False, save='qc1-pre-norm-replicates.pdf')
+sc.pl.violin(adata, ['n_genes', 'n_counts'], groupby='source', size=0, log=False, cut=0, show=False, save='qc1-pre-norm-source.pdf')
+sc.pl.violin(adata, ['n_genes', 'n_counts'], groupby='patient', size=0, log=False, cut=0, show=False, save='qc1-pre-norm-patient.pdf')
 
 
 # In[7]:
@@ -82,7 +83,7 @@ sc.pp.filter_genes(adata, min_cells=100) # Only filter genes here;
 
 
 ## violin plot after QC filtering
-sc.pl.violin(adata, ['n_genes','n_counts'], groupby='source', size=0, log=False, cut=0, show=False, save='qc1.pdf')
+sc.pl.violin(adata, ['n_genes','n_counts'], groupby='source', size=0, log=False, cut=0, show=False, save='qc1-source.pdf')
 sc.pl.violin(adata, ['n_genes','n_counts'], groupby='patient', size=0, log=False, cut=0, show=False, save='qc1-patient.pdf')
 
 
@@ -106,10 +107,3 @@ oh = open('gene_names.filtered.tsv', 'w')
 for g in adata.var_names:
     oh.write('%s\n' % g)
 oh.close()
-
-
-# In[ ]:
-
-
-
-

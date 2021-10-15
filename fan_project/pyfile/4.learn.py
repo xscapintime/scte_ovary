@@ -88,10 +88,3 @@ todraw = ['source', 'patient'] + ['leiden_r{0:.2f}'.format(r) for r in res]
 #Visualize the clustering and how this is reflected by different technical covariates
 sc.pl.tsne(adata, color=todraw, size=10, legend_loc='on data', show=False, save='tsne.pdf')
 sc.pl.umap(adata, color=todraw, size=10, legend_loc='on data', show=False, save='umap.pdf')
-
-
-# In[ ]:
-
-
-
-

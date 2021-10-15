@@ -34,6 +34,21 @@ from glbase3 import genelist, glload
 
 sc.settings.figdir = 'diffexp'
 
+# In[]:
+def mkdir(path):
+ 
+    folder = os.path.exists(path)
+ 
+    if not folder:                   #判断是否存在文件夹如果不存在则创建为文件夹
+        os.makedirs(path)            #makedirs 创建文件时如果路径不存在会创建这个路径
+        print("---  new folder...  ---")
+        print("---  OK  ---")
+ 
+    else:
+        print("---  There is this folder!  ---")
+        
+gls = "/mnt/e/projects/scte-gpc/scte_ovary/fan_project/pyfile/gls"
+mkdir(gls)
 
 # In[5]:
 
@@ -56,10 +71,3 @@ adata = sc.read('./learned.h5ad')
 sc.tl.rank_genes_groups(adata, de_leiden, method='t-test_overestim_var', n_genes=3000)
 #sc.tl.filter_rank_genes_groups(adata, min_fold_change=1)
 adata.write('./de.h5ad')
-
-
-# In[ ]:
-
-
-
-

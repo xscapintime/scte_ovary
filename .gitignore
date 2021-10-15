@@ -6,6 +6,7 @@
 *.glb
 
 *.pdf
+*.txt
 
 figures/
 .ipynb_checkpoints/

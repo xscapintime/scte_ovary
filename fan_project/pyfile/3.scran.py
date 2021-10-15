@@ -59,7 +59,7 @@ print('Number of cells: {:d}'.format(adata.n_obs))
 # In[5]:
 
 
-adata_pp = adata.copy()
+adata_pp = adata.copy()  # not used later?
 sc.pp.normalize_per_cell(adata_pp, counts_per_cell_after=1e6)
 sc.pp.log1p(adata_pp)
 sc.pp.pca(adata_pp, n_comps=20, svd_solver='arpack')
@@ -74,27 +74,6 @@ input_groups = adata_pp.obs['groups']
 data_mat = adata.X.T
 data_mat = sp.sparse.csc_matrix(data_mat)
 
-
-# In[7]:
-
-
-# -i data_mat -i input_groups -o size_factors
-#scran = importr('scran')
-#computeSumFactors = scran.computeSumFactors
-#size_factors = computeSumFactors(data_mat, clusters=input_groups, **{'min.mean': 0.1})
-#print(size_factors)
-
-
-# In[8]:
-
-
-# print(input_groups)
-
-
-# In[9]:
-
-
-# print(data_mat)
 
 
 # In[10]:
@@ -129,22 +108,9 @@ get_ipython().run_cell_magic('R', '', "\ndata_mat_r <- readMM('sparse_data_mat.m
 get_ipython().run_cell_magic('time', '', '\n%%R  -i input_groups -o size_factors\n\nsize_factors = computeSumFactors(data_mat_r, clusters=input_groups, min.mean=0.1)')
 
 
-# In[15]:
+# In[ ]:
 
-
-#print(size_factors)
-
-
-# In[16]:
-
-
-#type(size_factors)
-
-
-# In[17]:
-
-
-np.save("size_factors.npy",size_factors)
+np.save("size_factors.npy", size_factors)
 
 
 # In[18]:
@@ -162,7 +128,7 @@ adata.obs['size_factors'] = size_factors
 # In[20]:
 
 
-adata.layers["counts"] = adata.X.copy()
+adata.layers['counts'] = adata.X.copy()
 adata.X /= adata.obs['size_factors'].values[:,None]
 sc.pp.log1p(adata)
 adata.X = np.clip(adata.X, 0, 100000000) # get rid of <0
@@ -174,7 +140,7 @@ adata.raw = adata # You only need to do this if you do batch correction
 
 
 # combat batch correction could go here:
-sc.pp.combat(adata, key='replicate')
+sc.pp.combat(adata, key='sample_id') # by sample itself?
 
 
 # In[ ]:
@@ -185,10 +151,3 @@ adata.X = np.clip(adata.X, 0, 1e9) # get rid of <0
 adata.X = sp.sparse.csr_matrix(adata.X)
 
 adata.write('./normed.h5ad')
-
-
-# In[ ]:
-
-
-
-
