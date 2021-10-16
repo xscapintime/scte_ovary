@@ -44,29 +44,10 @@ all_genes = adata.var['n_cells'].index # gene names are stored in the index
 # In[6]:
 
 
-TEs = genelist(filename='./id_hg38/TE_genes_id.hg38.txt', format={'name': 0, 'force_tsv': True})
+TEs = genelist(filename='../../id_hg38/TE_genes_id.hg38.txt', format={'name': 0, 'force_tsv': True})
 
 
 # In[7]:
 
 
 get_ipython().run_cell_magic('time', '', "\nfor te in TEs:\n    print(te['name'])\n    if te['name'] in all_genes:\n        sc.pl.umap(adata, color=[te['name'], te['name']], size=10, legend_loc='on data', show=False, save='TE-{0}.pdf'.format(te['name']), vmin=0, vmax=3)")
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
