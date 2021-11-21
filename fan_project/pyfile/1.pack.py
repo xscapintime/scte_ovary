@@ -74,10 +74,9 @@ print('Loaded Samples...')
 
 
 # Quick pre-filtering, these should be low, otherwise it can mess up downstream analysis, but also can get rid of trivial uninteresting things
-
-[sc.pp.filter_cells(sam, min_genes=1000) for sam in samples]
+[sc.pp.filter_cells(sam, min_genes=100) for sam in samples]
 [sc.pp.filter_cells(sam, max_counts=200000) for sam in samples]
-[sc.pp.filter_cells(sam, min_counts=5000) for sam in samples]
+[sc.pp.filter_cells(sam, min_counts=100) for sam in samples]
 
 # Do not filter gene here; concatenate joins on the union, so if a gene fails in a single sample, it will also be deleted from all other samples;
 

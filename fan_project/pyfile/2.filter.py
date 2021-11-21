@@ -53,19 +53,19 @@ adata = sc.read('raw_data.h5ad')
 
 
 ## violin plot
-sc.pl.violin(adata, ['n_genes', 'n_counts'], groupby='source', size=0, log=False, cut=0, show=False, save='qc1-pre-norm-source.pdf')
-sc.pl.violin(adata, ['n_genes', 'n_counts'], groupby='patient', size=0, log=False, cut=0, show=False, save='qc1-pre-norm-patient.pdf')
+sc.pl.violin(adata, ['n_genes', 'n_counts'], groupby='source', size=0, log=False, cut=0, show=False, save='qc1-pre-norm-source_v2.pdf')
+sc.pl.violin(adata, ['n_genes', 'n_counts'], groupby='patient', size=0, log=False, cut=0, show=False, save='qc1-pre-norm-patient_v2.pdf')
 
 
 # In[7]:
 
 
 # Base filtering for QC failures:
-sc.pp.filter_cells(adata, min_genes=1500)
-sc.pp.filter_cells(adata, max_genes=8000)
-sc.pp.filter_cells(adata, min_counts=3000)
-sc.pp.filter_cells(adata, max_counts=100000)
-sc.pp.filter_genes(adata, min_cells=100) # Only filter genes here;
+sc.pp.filter_cells(adata, min_genes=200)
+sc.pp.filter_cells(adata, max_genes=4000)
+sc.pp.filter_cells(adata, min_counts=500)
+sc.pp.filter_cells(adata, max_counts=20000)
+sc.pp.filter_genes(adata, min_cells=3) # Only filter genes here; ## default value, also used in fan et al's paper
 #adata = adata[adata.obs['percent_mito'] < 0.2, :]
 
 
@@ -83,8 +83,8 @@ sc.pp.filter_genes(adata, min_cells=100) # Only filter genes here;
 
 
 ## violin plot after QC filtering
-sc.pl.violin(adata, ['n_genes','n_counts'], groupby='source', size=0, log=False, cut=0, show=False, save='qc1-source.pdf')
-sc.pl.violin(adata, ['n_genes','n_counts'], groupby='patient', size=0, log=False, cut=0, show=False, save='qc1-patient.pdf')
+sc.pl.violin(adata, ['n_genes','n_counts'], groupby='source', size=0, log=False, cut=0, show=False, save='qc1-source_v2.pdf')
+sc.pl.violin(adata, ['n_genes','n_counts'], groupby='patient', size=0, log=False, cut=0, show=False, save='qc1-patient_v2.pdf')
 
 
 # In[11]:
