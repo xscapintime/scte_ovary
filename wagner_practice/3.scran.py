@@ -41,7 +41,7 @@ anndata2ri.activate()
 plt.rcParams['figure.figsize']=(8,8) #rescale figures
 sc.settings.verbosity = 3
 #sc.set_figure_params(dpi=200, dpi_save=300)
-sc.logging.print_versions()
+#sc.logging.print_versions()
 
 
 # %%
@@ -143,5 +143,3 @@ adata.X = np.clip(adata.X, 0, 1e9) # get rid of <0
 adata.X = sp.sparse.csr_matrix(adata.X)
 
 adata.write('./normed.h5ad')
-
-
