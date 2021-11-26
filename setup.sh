@@ -1,7 +1,7 @@
 ## conda environment
 conda create --name scte r=3.6
 conda activate scte
-conda isntall python=3.8
+conda install python=3.8
 
 ## just for jupyter
 conda install -y jupyter
