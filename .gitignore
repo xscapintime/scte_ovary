@@ -4,6 +4,7 @@
 *.mtx
 *.npy
 *.glb
+*.csv
 
 *.pdf
 *.txt

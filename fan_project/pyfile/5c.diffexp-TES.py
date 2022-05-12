@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from matplotlib import colors
 import pandas as pd
-from glbase3 import genelist
+from glbase3 import genelist, glload
 
 
 # In[2]:
@@ -21,12 +21,6 @@ sc.settings.verbosity = 3
 sc.set_figure_params(dpi=200, dpi_save=200)
 matplotlib.rcParams['pdf.fonttype']=42
 matplotlib.rcParams['font.size']=10
-
-
-# In[3]:
-
-
-from glbase3 import genelist, glload
 
 
 # In[4]:
@@ -52,7 +46,8 @@ de_leiden = 'leiden_r0.10'
 # In[7]:
 
 
-get_ipython().run_cell_magic('time', '', "\nadata = sc.read('./de.h5ad')\nTEs = set(genelist(filename='./id_hg38/TE_genes_id.hg38.txt', format={'name': 0, 'force_tsv': True})['name'])")
+adata = sc.read('./de.h5ad')
+TEs = set(genelist(filename='../../id_hg38/TE_genes_id.hg38.txt', format={'name': 0, 'force_tsv': True})['name'])
 
 
 # In[8]:
@@ -95,16 +90,3 @@ get_ipython().run_cell_magic('time', '', "\n# join all and draw a dotplot:\nfor 
 
 
 get_ipython().run_cell_magic('time', '', "\nfor grp in newcols:\n    if not newcols[grp]:\n        continue\n    for k in newcols[grp]:\n        title = k['name']\n        sc.pl.umap(adata, color=k['name'], size=20, legend_loc='on data',\n            title=title,\n            vmin=0, vmax=3,\n            show=False, save='-markers-grp{0}-{1}.pdf'.format(grp, k['name']))\n        #sc.pl.violin(adata, [k], groupby='disease', size=0, log=False, cut=0, show=False, save='markers-{0}-disease.pdf'.format(k))\n        #sc.pl.violin(adata, [k], groupby='cell_type', size=0, log=False, cut=0, show=False, save='markers-{0}-cell_type.pdf'.format(k))")
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-

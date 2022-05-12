@@ -80,37 +80,37 @@ data_mat = sp.sparse.csc_matrix(data_mat)
 
 
 # Skip this if it's the second time for time-saving
-from scipy.io import mmwrite
-mmwrite('sparse_data_mat.mtx', data_mat)
+#from scipy.io import mmwrite
+#mmwrite('sparse_data_mat.mtx', data_mat)
 
 
 # In[11]:
 
 
-get_ipython().magic('load_ext rpy2.ipython')
+#get_ipython().magic('load_ext rpy2.ipython')
 
 
 # In[12]:
 
 
-get_ipython().run_cell_magic('R', '', '\nlibrary(Matrix)\nlibrary(scran)')
+#get_ipython().run_cell_magic('R', '', '\nlibrary(Matrix)\nlibrary(scran)')
 
 
 # In[13]:
 
 
-get_ipython().run_cell_magic('R', '', "\ndata_mat_r <- readMM('sparse_data_mat.mtx')\nstr(data_mat_r)")
+#get_ipython().run_cell_magic('R', '', "\ndata_mat_r <- readMM('sparse_data_mat.mtx')\nstr(data_mat_r)")
 
 
 # In[ ]:
 
 
-get_ipython().run_cell_magic('time', '', '\n%%R  -i input_groups -o size_factors\n\nsize_factors = computeSumFactors(data_mat_r, clusters=input_groups, min.mean=0.1)')
+#get_ipython().run_cell_magic('time', '', '\n%%R  -i input_groups -o size_factors\n\nsize_factors = computeSumFactors(data_mat_r, clusters=input_groups, min.mean=0.1)')
 
 
 # In[ ]:
 
-np.save("size_factors.npy", size_factors)
+#np.save("size_factors.npy", size_factors)
 
 
 # In[18]:
@@ -121,7 +121,7 @@ del adata_pp
 
 # In[19]:
 
-#size_factors = np.load("size_factors.npy")
+size_factors = np.load("size_factors.npy")
 adata.obs['size_factors'] = size_factors
 
 
